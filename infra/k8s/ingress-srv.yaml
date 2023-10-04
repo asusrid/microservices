@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-srv
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   ingressClassName: nginx
   rules:
@@ -9,14 +11,14 @@ spec:
       http:
         paths:
           - path: /posts/create
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: posts-clusterip-srv
                 port:
                   number: 4000
           - path: /posts
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: query-srv

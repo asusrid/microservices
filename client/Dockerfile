@@ -1,8 +1,8 @@
 FROM node:alpine
 
 # to solve current bug with create-react-app with docker containers
-ENV CI = true
-ENV WDS_SOCKET_PORT = 0
+ENV CI=true
+ENV WDS_SOCKET_PORT=0
 
 WORKDIR /app
 
